@@ -74,6 +74,14 @@ public static void main(String[] args) throws InterruptedException {
    driver.findElement(By.id("color_15")).click();
   
   //Click on add to cart
+  String cart =driver.findElement(By.xpath("/html/body/div/div[2]/div/div[4]/div/div/div/div[4]/form/div/div[3]/div[1]/p/button/span")).getText(); 
+ if (cart.equals("Add to cart")) {
+	 System.out.println("Product Successfully added to cart");
+ }
+ else {
+	 System.out.println("Unable to add to cart");
+	 driver.quit();
+ }
   driver.findElement(By.xpath("//p[@id='add_to_cart']//span[.='Add to cart']")).click();
   
   //Click on proceed
@@ -88,7 +96,6 @@ public static void main(String[] args) throws InterruptedException {
   } else {
 	  System.out.println("Price Validation failed.Total Price at Check Out is "+totalprice);
   }
-   
   driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/p[2]/a[1]/span")).click();
   driver.findElement(By.xpath("/html/body/div[1]/div[2]/div/div[3]/div/form/p/button/span")).click();
   //Agree terms&Conditions
@@ -107,7 +114,7 @@ public static void main(String[] args) throws InterruptedException {
   // Verify that Product is ordered
   if(ConfirmationText.contains("complete")) {
 	  
-   System.out.println("Order Completed: Test Case Passed");
+   System.out.println("Product Successfully Orderer: Test Case Passed");
   }
   else {
 	  
